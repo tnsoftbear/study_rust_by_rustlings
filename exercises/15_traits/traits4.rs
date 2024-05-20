@@ -21,9 +21,9 @@ impl Licensed for SomeSoftware {}
 impl Licensed for OtherSoftware {}
 
 // YOU MAY ONLY CHANGE THE NEXT LINE
-fn compare_license_types(software: dyn Licensed, software_two: dyn Licensed) -> bool {
+// Not correct: fn compare_license_types(software: dyn Licensed, software_two: dyn Licensed) -> bool {
 // fn compare_license_types(software: impl Licensed, software_two: impl Licensed) -> bool {
-// fn compare_license_types<U: Licensed, T: Licensed>(software: U, software_two: T) -> bool {
+fn compare_license_types<U: Licensed, T: Licensed>(software: U, software_two: T) -> bool {
     software.licensing_info() == software_two.licensing_info()
 }
 
