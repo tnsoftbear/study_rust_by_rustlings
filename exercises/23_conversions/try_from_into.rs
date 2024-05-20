@@ -69,10 +69,11 @@ impl TryFrom<&[i16]> for Color {
         if slice.len() != 3 {
             return Err(Self::Error::BadLen)
         }
-        match slice {
-            [0..=255, 0..=255, 0..=255] => Ok(Color { red: slice[0] as u8, green: slice[1] as u8, blue: slice[2] as u8 }),
-            _ => Err(Self::Error::IntConversion)
-        }
+        // match slice {
+        //     [0..=255, 0..=255, 0..=255] => Ok(Color { red: slice[0] as u8, green: slice[1] as u8, blue: slice[2] as u8 }),
+        //     _ => Err(Self::Error::IntConversion)
+        // }
+        (slice[0], slice[1], slice[2]).try_into()
     }
 }
 
